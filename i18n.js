@@ -72,8 +72,11 @@ var i18n = module.exports = function (opt) {
 	}
 
 	if (this.request) {
-		if (this.subdomain) {
-			this.setLocaleFromSubdomain(this.request);
+
+		this.prefLocale = this.preferredLocale();
+
+		if (this.prefLocale !== false && this.prefLocale !== this.locale) {
+			this.setLocale(this.prefLocale);
 		}
 
 		if (this.query !== false) {
@@ -84,10 +87,8 @@ var i18n = module.exports = function (opt) {
 			this.setLocaleFromSessionVar(this.request);
 		}
 
-		this.prefLocale = this.preferredLocale();
-
-		if (this.usePrefLocale !== false &&  this.prefLocale !== false && this.prefLocale !== this.locale) {
-			this.setLocale(this.prefLocale);
+		if (this.subdomain) {
+			this.setLocaleFromSubdomain(this.request);
 		}
 	}
 };
