@@ -7,6 +7,9 @@
  * Adds new strings on-the-fly when first used in your app.
  * No extra parsing needed.
 
+
+--> force locale according to subdomain 
+
 ## Installation
 
 Run the following:
